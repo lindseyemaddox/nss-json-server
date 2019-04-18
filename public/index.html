@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSON Server Practice</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>JSON Practice</h1>
+
+  <h2>Installation</h2>
+
+  <code>npm install -g json-server</code>
+
+  <h2>Start JSON Server</h2>
+
+  <code>json-server --watch db.json</code>
+
+  <h4>If you go to <a href="http://localhost:3000/posts/1">http://localhost:3000/posts/1</a>, you'll get</h4>
+
+  <code>{ "id": 1, "title": "json-server", "author": "typicode" }</code>
+
+  <h3>When doing requests, it's good to know that:</h3>
+
+  <ul>
+    <li>If you make POST, PUT, PATCH or DELETE requests, changes will be automatically and safely saved to <code>db.json</code> using <a href="https://github.com/typicode/lowdb">lowdb</a>.</li>
+    <li>Your request body JSON should be object enclosed, just like the GET output. (for example <code>{"name": "Foobar"}</code>)</li>
+    <li>Id values are not mutable. Any <code>id</code> value in the body of your PUT or PATCH request will be ignored. Only a value set in a POST request will be respected, but only if not already taken.</li>
+    <li>A POST, PUT or PATCH request should include a <code>Content-Type: application/json</code> header to use the JSON in the request body. Otherwise it will result in a 200 OK but without changes being made to the data.</li>
+    <li>You can add routes outside of the default routes using <code>--routes</code>.</li>
+  </ul>
+
+  <h4>More information on Routes <a href="https://github.com/typicode/json-server#routes">here</a>.</h4>
+
+  <h2>Static file server</h2>
+
+  <p>You can use JSON Server to serve your HTML, JS and CSS, simply create a <code>./public</code> directory or use <code>--static</code> to set a different static files directory.</p>
+
+  <code>
+      mkdir public<br/>
+      echo 'hello world' > public/index.html<br/>
+      json-server db.json
+  </code><br/><br/>
+
+  <code>json-server db.json --static ./some-other-dir</code>
+
+  <h2>Alternative port</h2>
+
+  <p>You can start JSON Server on other ports with the <code>--port</code> flag:</p>
+
+  <code>json-server --watch db.json --port 3004</code>
+  
+  <script src="scripts.js" type="javascript"></script>
+</body>
+</html>
